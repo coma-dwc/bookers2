@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def edit
   end
 
-# indexが不足
+  def index
+  end
 
 end
