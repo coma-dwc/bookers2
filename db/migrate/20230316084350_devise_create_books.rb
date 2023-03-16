@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class DeviseCreateUsers < ActiveRecord::Migration[6.1]
+class DeviseCreateBooks < ActiveRecord::Migration[6.1]
   def change
-    create_table :users do |t|
+    create_table :books do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -32,18 +32,18 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-## 名前を保存するカラム
-t.string :name
-## 自己紹介文を保存するカラム
-t.string :introduction
 
+      ## 本のタイトルを保存するカラム
+      t.string :title
+      ## 感想を保存するカラム
+      t.string :body
 
       t.timestamps null: false
     end
 
-    add_index :users, :email,                unique: true
-    add_index :users, :reset_password_token, unique: true
-    # add_index :users, :confirmation_token,   unique: true
-    # add_index :users, :unlock_token,         unique: true
+    add_index :books, :email,                unique: true
+    add_index :books, :reset_password_token, unique: true
+    # add_index :books, :confirmation_token,   unique: true
+    # add_index :books, :unlock_token,         unique: true
   end
 end
