@@ -25,43 +25,43 @@
             <% if user_signed_in? %>
             <li class="nav-link text-light">
               <i class="fas fa-home"></i>
-              <%= link_to("Home","root_path",class: 'text-light') %>
+              <%= link_to "Home",root_path %>
             </li>
 
             <li class="nav-link text-light">
               <i class="fas fa-users"></i>
-              <%= link_to("Users","user_registration_path",class: 'text-light') %>
+              <%= link_to "Users",user_registration_path %>
             </li>
 
             <li class="nav-link text-light">
               <i class="fas fa-book-open"></i>
-              <%= link_to("Books","books_path",class: 'text-light') %>
+              <%= link_to"Books",books_path %>
             </li>
 
             <li class="nav-link text-light">
               <i class="fas fa-sign-out-alt"></i>
-              <%= link_to("Log out", destroy_user_session_path,  method: :delete,class: 'text-light') %>
+              <%= link_to"Log out", destroy_user_session_path,  method: :delete %>
             </li>
 
             <% else %>
             <li class="nav-link text-light">
               <i class="fas fa-home"></i>
-              <%= link_to("Home","root_path",class: 'text-light') %>
+              <%= link_to"Home",root_path %>
             </li>
 
             <li class="nav-link text-light">
               <i class="fas fa-link"></i>
-              <%= link_to("About","about_path",class: 'text-light') %>
+              <%= link_to"About",about_path %>
             </li>
 
             <li class="nav-link text-light">
               <i class="fas fa-user-plus"></i>
-              <%= link_to("Sign Up","new_user_registration_path",class: 'text-light') %>
+              <%= link_to"Sign Up",new_user_registration_path %>
             </li>
 
             <li class="nav-link text-light">
               <i class="fas fa-sign-in-alt"></i>
-              <%= link_to("Log in","new_user_session_path",class: 'text-light') %>
+              <%= link_to"Log in",new_user_session_path %>
             </li>
 
             <% end %>
@@ -70,12 +70,12 @@
         </div>
       </nav>
     </header>
-    <main class="mb-auto">
+
       <!-- mainの内容 -->
     <%= yield %>
     </main>
     <footer>
-      <div class="container">
+      <div class="container mt-5">
         <div class="row">
           <div class="mx-auto">
             <span>CopyRight Infratop.inc</span>
