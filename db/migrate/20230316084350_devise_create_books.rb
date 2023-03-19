@@ -37,6 +37,8 @@ class DeviseCreateBooks < ActiveRecord::Migration[6.1]
       t.string :title
       ## 感想を保存するカラム
       t.string :body
+      ## ユーザーを保存する
+      t.integer :user_id
 
       t.timestamps null: false
     end
