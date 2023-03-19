@@ -7,15 +7,17 @@
 <div class='col-md-3'>
 <h2>User info</h2>
 <table class="table">
-  <tr><%= image_tag '/images/default-image.jpg',size:'100x100' %> </tr>
+  <tr><%= image_tag current_user.get_profile_image(100,100) %> </tr>
+  <tbody>
   <tr>
     <th>name</th>
-    <th></th> <!-- ユーザー名 -->
+    <th><%= current_user.name %></th> <!-- ユーザー名 -->
   </tr>
   <tr>
     <th>introduction</th>
-    <th></th> <!-- 自己紹介文 -->
+    <th><%= current_user.introduction %></th> <!-- 自己紹介文 -->
   </tr>
+  </tbody>
 </table>
 
 
@@ -27,14 +29,21 @@
 
 <h1>New book</h1>
 
-<%= form_with model: Book.new do |f| %>
-  <h4>Title</h4>
-  <%= f.text_field :title, class: "form-control" %>
+<%= form_with model: @book do |f| %>
 
-  <h4>Opinion</h4>
-  <%= f.text_area :body, class: "form-control" %>
+  <div class="form-group">
+      <%= f.label :title %> <br>
+      <%= f.text_field :title, class: "form-control"  %>
+  </div>
 
-  <%= f.submit 'Create Book',class: "btn btn-success my-3" %>
+  <div class="form-group">
+      <%= f.label :body %> <br>
+      <%= f.text_area :body, class: "form-control"  %>
+  </div>
+
+  <div class="form-group">
+      <%= f.submit 'Create Book', class: "btn btn-success my-3" %>
+  </div>
 <% end %>
 </div>
 </div>
