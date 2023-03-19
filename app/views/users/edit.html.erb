@@ -1,16 +1,36 @@
-<h1>User info</h1>
+<h1>エラーで表示されない</h1>
+<!--NoMethodError in UsersController#edit-->
+<!--undefined method `is_matching_login_user' for #<UsersController:0x0000000000de30>-->
 
-<%= form_with model: @user do |f| %>
+<div class="contrainer">
+  <div class="row">
+    <div class="mx-auto">
+      <h2>User info</h2>
 
-  <h4>Name</h4>
-  <%= f.text_field :name %>
+      <%= form_with model: @user do |f| %>
 
-  <h4>Image</h4>
-  <%= f.file_field :image, accept: "image/*" %>
-  <%= f.submit 'Update User' %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, id: :user_name %>
+    </div>
 
-  <h4>Introduction</h4>
-  <%= f.text_area :body %>
+
+      <div class="form-group">
+        <%= f.label :image %>
+        <%= f.file_field :profile_image, id: :user_profile_image %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :introduction %>
+        <%= f.text_area :introduction, id: :user_introduction %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit 'Update User', class:"btn btn-secondary" %>
+      </div>
 
 
 <% end %>
+    </div>
+  </div>
+</div>
