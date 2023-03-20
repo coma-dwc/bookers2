@@ -1,4 +1,14 @@
-
+<p id ="notice"></p>
+<% if @user.errors.any? %>
+<%= @user.errors.count %>error prohibited this obj from being saved:
+<div id="error_explanation" class="alert alert-danger">
+<ul>
+    <% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+</ul>
+</div>
+<% end %>
 <!--NoMethodError in UsersController#edit-->
 <!--undefined method `is_matching_login_user' for #<UsersController:0x0000000000de30>-->
 
