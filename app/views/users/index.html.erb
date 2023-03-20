@@ -1,8 +1,50 @@
-<p>users#indexページ</p>
-<p>全ユーザーの一覧ページ</p>
+<!-- 全ユーザーの一覧ページ users#index users_path -->
+<div class="container px-5 px-sm-0">
+<div class="row">
+<div class='col-md-3'>
+<h2>User info</h2>
+<table class="table">
+  <tr><%= image_tag current_user.get_profile_image(100,100) %> </tr>
+  <tbody>
+  <tr>
+    <th>name</th>
+    <th><%= current_user.name %></th> <!-- ユーザー名 -->
+  </tr>
+  <tr>
+    <th>introduction</th>
+    <th><%= current_user.introduction %></th> <!-- 自己紹介文 -->
+  </tr>
+  </tbody>
+</table>
 
-<div class="container">
-  <div class="row">
+
+<div class="row">
+<%= link_to edit_user_path(current_user) ,class: "btn btn-outline-secondary btn-block" do %>
+<i class="fas fa-user-cog"></i>
+<% end %>
+</div>
+
+<h1>New book</h1>
+
+<%= form_with model: @book do |f| %>
+
+  <div class="form-group">
+      <%= f.label :title %> <br>
+      <%= f.text_field :title, class: "form-control"  %>
+  </div>
+
+  <div class="form-group">
+      <%= f.label :body %> <br>
+      <%= f.text_area :body, class: "form-control"  %>
+  </div>
+
+  <div class="form-group">
+      <%= f.submit 'Create Book', class: "btn btn-success my-3" %>
+  </div>
+<% end %>
+</div>
+<!-- 右側のUsers -->
+
     <div class="col-md-8 offset-md-1">
       <h2>Users</h2>
       <table class="table">

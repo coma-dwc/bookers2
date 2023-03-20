@@ -1,10 +1,90 @@
 <!-- bookのindexページの部分テンプレート　user infoが入る -->
-<p>users#show 自分の詳細画面(マイページのようなもの)</p>
+<div>
+    <%= flash[:notice] %>
+</div>
+<!--<p>users#show 自分の詳細画面(マイページのようなもの)</p>-->
 
-<p>左にUses info とNew book</p>
-<p>左に自分の投稿一覧(自分のBooks)</Books></p>
+<!--<p>左にUses info とNew book</p>-->
+<!--<p>左に自分の投稿一覧(自分のBooks)</Books></p>-->
 
+<div class="container px-5 px-sm-0">
+<div class="row">
+<div class='col-md-3'>
+<h2>User info</h2>
+<table class="table">
+  <tr><%= image_tag current_user.get_profile_image(100,100) %> </tr>
+  <tbody>
+  <tr>
+    <th>name</th>
+    <th><%= current_user.name %></th> <!-- ユーザー名 -->
+  </tr>
+  <tr>
+    <th>introduction</th>
+    <th><%= current_user.introduction %></th> <!-- 自己紹介文 -->
+  </tr>
+  </tbody>
+</table>
+
+
+<div class="row">
+<%= link_to edit_user_path(current_user) ,class: "btn btn-outline-secondary btn-block" do %>
+<i class="fas fa-user-cog"></i>
+<% end %>
+</div>
+
+<h1>New book</h1>
+
+<%= form_with model: @book do |f| %>
+
+  <div class="form-group">
+      <%= f.label :title %> <br>
+      <%= f.text_field :title, class: "form-control"  %>
+  </div>
+
+  <div class="form-group">
+      <%= f.label :body %> <br>
+      <%= f.text_area :body, class: "form-control"  %>
+  </div>
+
+  <div class="form-group">
+      <%= f.submit 'Create Book', class: "btn btn-success my-3" %>
+  </div>
+<% end %>
+</div>
 
 
 
 <!-- ユーザーの投稿一覧 users#showの右側Books -->
+<div class='col-md-8 offset-md-1'>
+    <h2>Books</h2>
+    <table class="table">
+        <thead>
+            <tr>
+            <th>Title</th>
+            <th>Opinion</th>
+            <th colspan="3"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+          <% @books.each do |book| %>
+           <tr>
+                <td>
+                  <%= link_to user_path(book.user.id) do %> <!-- user_path users#show ログイン後の自分のHomeページに飛ぶ -->
+                  <%= image_tag book.user.get_profile_image(100,100) %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to book_path(book.id) do %> <!-- book_path books#show book detailのページに飛ぶ -->
+                  <%= book.title %>
+                  <% end %>
+                </td>
+
+                <td><%= book.body %></td>
+            </tr>
+          <% end %>
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
