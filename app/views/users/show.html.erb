@@ -1,56 +1,14 @@
-<p id ="notice"></p>
-<!-- bookのindexページの部分テンプレート　user infoが入る -->
-<div>
-    <%= flash[:notice] %>
-</div>
-<!--<p>users#show 自分の詳細画面(マイページのようなもの)</p>-->
-
-<!--<p>左にUses info とNew book</p>-->
-<!--<p>左に自分の投稿一覧(自分のBooks)</Books></p>-->
-
 <div class="container px-5 px-sm-0">
 <div class="row">
 <div class='col-md-3'>
-<h2>User info</h2>
-<table class="table">
-  <tr><%= image_tag current_user.get_profile_image(100,100) %> </tr>
-  <tbody>
-  <tr>
-    <th>name</th>
-    <th><%= current_user.name %></th> <!-- ユーザー名 -->
-  </tr>
-  <tr>
-    <th>introduction</th>
-    <th><%= current_user.introduction %></th> <!-- 自己紹介文 -->
-  </tr>
-  </tbody>
-</table>
+<!--<p>users#show 自分の詳細画面(マイページのようなもの)</p>-->
+
+<!-- user info -->
+<%= render 'info', users: @users %>
 
 
-<div class="row">
-<%= link_to edit_user_path(current_user) ,class: "btn btn-outline-secondary btn-block" do %>
-<i class="fas fa-user-cog"></i>
-<% end %>
-</div>
-
-<h2 class="mt-3">New book</h2>
-
-<%= form_with model: @book do |f| %>
-
-  <div class="form-group">
-      <%= f.label :title, "Title" %> <br>
-      <%= f.text_field :title, class: "form-control"  %>
-  </div>
-
-  <div class="form-group">
-      <%= f.label :body, "Opinion" %> <br>
-      <%= f.text_area :body, class: "form-control"  %>
-  </div>
-
-  <div class="form-group">
-      <%= f.submit 'Create Book', class: "btn btn-success my-3" %>
-  </div>
-<% end %>
+<!-- new book -->
+<%= render 'books/newbook', book: @book %>
 </div>
 
 
