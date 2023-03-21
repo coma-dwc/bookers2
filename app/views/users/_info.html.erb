@@ -1,21 +1,21 @@
 <h2>User info</h2>
 <table class="table">
-  <tr><%= image_tag current_user.get_profile_image(100,100) %> </tr>
+  <tr><%= image_tag user.get_profile_image(100,100) %> </tr>
   <tbody>
   <tr>
     <th>name</th>
-    <th><%= current_user.name %></th> <!-- ユーザー名 -->
+    <th><%= user.name %></th> <!-- ユーザー名 -->
   </tr>
   <tr>
     <th>introduction</th>
-    <th><%= current_user.introduction %></th> <!-- 自己紹介文 -->
+    <th><%= user.introduction %></th> <!-- 自己紹介文 -->
   </tr>
   </tbody>
 </table>
 
 
 <div class="row">
-<%= link_to edit_user_path(current_user) ,class: "btn btn-outline-secondary btn-block" do %>
+<%= link_to edit_user_path(user) ,class: "btn btn-outline-secondary btn-block" do %>
 <i class="fas fa-user-cog"></i>
 <% end %>
 </div>
